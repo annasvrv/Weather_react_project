@@ -25,7 +25,7 @@ export default function App() {
             target="_blank"
             title="GitHubCode"
           >
-            Open-sourced code on GitHub
+            open-sourced code on GitHub
           </a>
         </footer>
       </div>
