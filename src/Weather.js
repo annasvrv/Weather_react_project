@@ -1,18 +1,20 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
+
 import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function displayWeather(response) {
-    console.log(response.data);
+    // console.log(response.data);
     setWeatherData({
       ready: true,
       city: response.data.name,
       country: response.data.sys.country,
-      date: "September 29 17:32 Friday",
+      date: new Date(response.data.dt * 1000),
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       wind: Math.round(response.data.wind.speed),
@@ -59,7 +61,9 @@ export default function Weather(props) {
             {weatherData.city}, {weatherData.country}
           </h1>
           <div className="date mb-5">
-            <span>{weatherData.date}</span>
+            <span>
+              <FormattedDate date={weatherData.date} />
+            </span>
           </div>
           <div className="row currentWeather">
             <div className="col-6 d-flex justify-content-evenly">
@@ -88,7 +92,7 @@ export default function Weather(props) {
                 <li className="conditionDescription">
                   {weatherData.description}
                 </li>
-                <li>Wind: {weatherData.wind} m/s</li>
+                <li>Wind: {weatherData.wind} km/h</li>
                 <li>Humidity: {weatherData.humidity}%</li>
                 <li>Pressure: {weatherData.pressure} hPa</li>
               </ul>
