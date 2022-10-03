@@ -7,7 +7,7 @@
 .Weather {
   margin: 0 auto;
   font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid #bec8c9;
+  border: 1px solid #798a8b;
   border-radius: 7px;
   background-image: url("./weather2.jpeg");
   background-size: cover;
@@ -66,8 +66,12 @@
 .Weather h1 {
   margin: 0;
   opacity: 0.8;
-  color: var(--secondary-color);
-  opacity: 0.6;
+  /* color: var(--secondary-color); */
+  /* color: #644715; */
+  /* color: #91702F; */
+  /* color: #D2A037; */
+  /* color: #548491; */
+  /* opacity: 0.6; */
 }
 
 .Weather .date {

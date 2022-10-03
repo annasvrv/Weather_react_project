@@ -21,7 +21,9 @@ export default function Weather(props) {
       wind: Math.round(response.data.wind.speed * 3.6),
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
+      // icon: `./openweathermap/${response.data.weather[0].icon}.svg`,
+      // icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
   function search() {
