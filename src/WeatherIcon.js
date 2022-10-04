@@ -39,11 +39,5 @@ export default function WeatherIcon(props) {
     "50n":
       "https://basmilius.github.io/weather-icons/production/fill/all/partly-cloudy-night-fog.svg",
   };
-  return (
-    <img src={codeMapping[props.code]} alt={props.alt} />
-    // <img
-    //   src="https://basmilius.github.io/weather-icons/production/fill/all/cloudy.svg"
-    //   alt={props.alt}
-    // />
-  );
+  return <img src={codeMapping[props.code]} alt={props.alt} />;
 }

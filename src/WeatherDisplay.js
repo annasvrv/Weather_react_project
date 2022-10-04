@@ -1,6 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import TempConvert from "./TempConvert";
 
 export default function WeatherDisplay(props) {
   return (
@@ -17,14 +18,10 @@ export default function WeatherDisplay(props) {
         <div className="col-6 d-flex justify-content-evenly">
           <div>
             <WeatherIcon code={props.info.icon} alt={props.info.description} />
-            {/* <img
-              src={props.info.icon}
-              alt={props.info.description}
-              
-            /> */}
           </div>
           <div>
-            <span className="temperature">{props.info.temperature}</span>{" "}
+            <TempConvert celsius={props.info.temperature} />
+            {/* <span className="temperature">{props.info.temperature}</span>{" "}
             <span className="unitBlock">
               <a href="/" className="units">
                 ºC
@@ -33,7 +30,7 @@ export default function WeatherDisplay(props) {
               <a href="/" className="units">
                 ºF
               </a>
-            </span>
+            </span> */}
           </div>
         </div>
         <div className="col-6">

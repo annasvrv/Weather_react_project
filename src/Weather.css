@@ -1,6 +1,6 @@
 :root {
   --main-color: rgb(51, 51, 28);
-  --secondary-color: rgb(236, 110, 75);
+  --secondary-color: rgb(84, 132, 145);
   --field-color: rgba(212, 209, 204, 0.7);
 }
 
@@ -71,6 +71,7 @@
   /* color: #91702F; */
   /* color: #D2A037; */
   /* color: #548491; */
+  /* color: rgb(236, 110, 75);; */
   /* opacity: 0.6; */
 }
 
@@ -79,10 +80,6 @@
   font-size: 18px;
   letter-spacing: 2px;
 }
-/* .Weather .date span {
-  padding-bottom: 3px;
-  border-bottom: 0.7px solid var(--secondary-color);
-} */
 
 .Weather img {
   width: 100px;
@@ -103,7 +100,7 @@
 
 .Weather .units {
   text-decoration: none;
-  color: var(--main-color);
+  color: var(--secondary-color);
 }
 
 .Weather .conditions {
