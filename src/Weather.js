@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherDisplay from "./WeatherDisplay";
+import Forecast from "./Forecast";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 
@@ -97,19 +98,22 @@ export default function Weather(props) {
             </div>
           </form>
           <WeatherDisplay info={weatherData} />
+          <Forecast />
         </div>
       </div>
     );
   } else {
     search();
     return (
-      <RotatingLines
-        strokeColor="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        width="96"
-        visible={true}
-      />
+      <div className="spinner">
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="96"
+          visible={true}
+        />
+      </div>
     );
   }
 }

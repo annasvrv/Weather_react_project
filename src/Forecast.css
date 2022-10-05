@@ -1,0 +1,30 @@
+.Forecast .weather-forecast {
+  margin: 20px 0 0;
+  background-color: transparent;
+  color: var(--main-color);
+  opacity: 0.8;
+  /* border-color: var(--main-color); */
+  border: none;
+}
+
+.Forecast .row {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+/* .Forecast ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+} */
+
+.Forecast .forecastDay {
+  padding: 0 15px;
+}
+
+.Forecast .forecastIcon img{
+  width: 56px;
+}
