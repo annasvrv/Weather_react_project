@@ -1,109 +1,49 @@
-import React from "react";
-import WeatherIcon from "./WeatherIcon";
+import React, {
+  useState,
+  useEffect,
+} from "react";
 import "./Forecast.css";
+import axios from "axios";
+import WeatherForecastDay from "./WeatherForecastDay";
 
-export default function Forecast() {
-  return (
-    <div className="Forecast">
-      <div className=" weather-forecast">
-        {/* <div className="card-body p-0"> */}
+
+export default function Forecast(props) {
+  let [loaded, setLoaded] = useState(false);
+  let [predictWeather, setPredictWeather] = useState(null);
+
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.location]);
+
+  function showForecast(response) {
+    setPredictWeather(response.data.daily.slice(1, 8));
+    setLoaded(true);
+  }
+  if (loaded) {
+    return (
+      <div className="Forecast">
+        <div className=" weather-forecast">
           <div className="row">
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
-            <div className="col forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </div>
+            {predictWeather.map(function (dailyForecast, index) {
+              if (index < 7) {
+                return (
+                  <div className="col forecastDay" key={index}>
+                    <WeatherForecastDay data={dailyForecast} />
+                  </div>
+                );
+              }
+            })}
           </div>
-          {/* <ul className="d-flex justify-content-evenly">
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Fri</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Sat</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Sun</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Mon</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Tue</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Wed</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-            <li className="forecastDay">
-              <strong className="forecastWeekDay">Thu</strong>
-              <div className="forecastIcon">
-                <WeatherIcon code="02d" />
-              </div>
-              <span className="forecastTemp">25</span>ºC
-            </li>
-          </ul> */}
-        {/* </div> */}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let latitude = props.location.lat;
+    let longitude = props.location.lon;
+    let unit = "metric";
+    let apiKey = "74a1988810687be79d98c8fd17e5884a";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(showForecast);
+  }
+  return "Loading...";
 }

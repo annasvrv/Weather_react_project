@@ -118,8 +118,3 @@
 .Weather .conditionDescription::first-letter {
   text-transform: capitalize;
 }
-
-.Weather .spinner {
-  margin: 0 50px 0;
-  text-align: center;
-}

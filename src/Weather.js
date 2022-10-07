@@ -11,9 +11,9 @@ export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
 
   function displayWeather(response) {
-    // console.log(response.data);
     setWeatherData({
       ready: true,
+      coordinates: response.data.coord,
       city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt * 1000),
@@ -23,8 +23,6 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       pressure: response.data.main.pressure,
       icon: response.data.weather[0].icon,
-
-      // icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
   function search() {
@@ -98,7 +96,7 @@ export default function Weather(props) {
             </div>
           </form>
           <WeatherDisplay info={weatherData} />
-          <Forecast />
+          <Forecast location={weatherData.coordinates} />
         </div>
       </div>
     );

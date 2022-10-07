@@ -6,10 +6,10 @@ import TempConvert from "./TempConvert";
 export default function WeatherDisplay(props) {
   return (
     <div className="WeatherDisplay">
-      <h1>
+      <h1 className="mt-4">
         {props.info.city}, {props.info.country}
       </h1>
-      <div className="date mb-5">
+      <div className="date mb-4">
         <span>
           <FormattedDate date={props.info.date} />
         </span>
@@ -21,16 +21,6 @@ export default function WeatherDisplay(props) {
           </div>
           <div>
             <TempConvert celsius={props.info.temperature} />
-            {/* <span className="temperature">{props.info.temperature}</span>{" "}
-            <span className="unitBlock">
-              <a href="/" className="units">
-                ºC
-              </a>{" "}
-              |{" "}
-              <a href="/" className="units">
-                ºF
-              </a>
-            </span> */}
           </div>
         </div>
         <div className="col-6">

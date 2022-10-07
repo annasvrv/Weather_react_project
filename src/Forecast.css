@@ -10,21 +10,13 @@
 .Forecast .row {
   margin: 0;
   padding: 0;
-  list-style: none;
   text-align: center;
 }
-
-/* .Forecast ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-align: center;
-} */
 
 .Forecast .forecastDay {
   padding: 0 15px;
 }
 
 .Forecast .forecastIcon img{
-  width: 56px;
+  width: 52px;
 }
