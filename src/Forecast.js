@@ -1,11 +1,7 @@
-import React, {
-  useState,
-  useEffect,
-} from "react";
+import React, { useState, useEffect } from "react";
 import "./Forecast.css";
 import axios from "axios";
 import WeatherForecastDay from "./WeatherForecastDay";
-
 
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false);
@@ -31,6 +27,8 @@ export default function Forecast(props) {
                     <WeatherForecastDay data={dailyForecast} />
                   </div>
                 );
+              } else {
+                return null;
               }
             })}
           </div>
