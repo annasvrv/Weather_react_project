@@ -22,7 +22,7 @@ export default function Forecast(props) {
     let unit = "metric";
     let apiKey = "74a1988810687be79d98c8fd17e5884a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
-    
+
     axios.get(apiUrl).then(showForecast);
   }
   if (loaded) {

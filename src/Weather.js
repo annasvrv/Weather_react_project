@@ -6,9 +6,10 @@ import { RotatingLines } from "react-loader-spinner";
 
 import "./Weather.css";
 
-export default function Weather(props) {
+export default function Weather({ defaultCity, defaultUnit }) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(`${defaultCity}`);
+  let unit = `${defaultUnit}`;
 
   function displayWeather(response) {
     setWeatherData({
@@ -25,9 +26,9 @@ export default function Weather(props) {
       icon: response.data.weather[0].icon,
     });
   }
+
   function search() {
     const apiKey = "74a1988810687be79d98c8fd17e5884a";
-    let unit = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 
     axios.get(apiUrl).then(displayWeather);
@@ -36,7 +37,6 @@ export default function Weather(props) {
   function showMyPosition(position) {
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
-    let unit = "metric";
     let apiKey = "74a1988810687be79d98c8fd17e5884a";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}
 &lon=${lon}&units=${unit}&appid=${apiKey}`;
@@ -95,7 +95,7 @@ export default function Weather(props) {
               </div>
             </div>
           </form>
-          <WeatherDisplay info={weatherData} />
+          <WeatherDisplay weatherData={weatherData} />
           <Forecast location={weatherData.coordinates} />
         </div>
       </div>

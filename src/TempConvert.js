@@ -14,10 +14,11 @@ export default function TempConvert(props) {
   function fahrenheit() {
     return (props.celsius * 9) / 5 + 32;
   }
+
   if (unit === "celsius") {
     return (
       <div className="TempConvert">
-        <span className="temperature">{props.celsius}</span>{" "}
+        <span className="temperature">{props.tempNumber}</span>{" "}
         <span className="unitBlock">
           ºC |{" "}
           <a href="/" onClick={showFahrenheit} className="units">

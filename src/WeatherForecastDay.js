@@ -1,6 +1,7 @@
 import React from "react";
 import WeatherIcon from "./WeatherIcon";
 
+
 export default function WeatherForecastDay(props) {
   function tempDaily() {
     return Math.round(props.data.temp.day);
@@ -19,7 +20,7 @@ export default function WeatherForecastDay(props) {
       <div className="forecastIcon">
         <WeatherIcon code={props.data.weather[0].icon} />
       </div>
-      <span>{tempDaily()}</span>º
+      <span>{tempDaily()}º</span>
     </div>
   );
 }
